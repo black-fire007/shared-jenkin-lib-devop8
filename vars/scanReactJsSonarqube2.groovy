@@ -1,7 +1,8 @@
-del call(String projectName, String projectKey , String projectVersion){
-        withSonarQubeEnv(credentialsId: 'SONARQUBE_TOKEN', installationName: 'sonarqube-scanner') {
+def call(String projectKey , String projectName, String projectVersion){
+
+withSonarQubeEnv(credentialsId: 'SONARQUBE_TOKEN',
+ installationName: 'sonarqube-scanner') {
                 script{
- 
                     sh """
                     ${scannerHome}/bin/sonar-scanner \
                     -Dsonar.projectKey=${projectKey} \
@@ -11,4 +12,8 @@ del call(String projectName, String projectKey , String projectVersion){
                         
                         }
             }
+
+
+
+
 }
