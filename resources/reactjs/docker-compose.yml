@@ -1,4 +1,10 @@
+# services:
+#   nginx-svc: 
+#     image: nginx:alpine
+#     container_name: react-cont
+
 services:
-  nginx-svc: 
-    image: nginx:alpine
-    container_name: react-cont
+  react-app:
+    image: ${IMAGE_NAME}:${IMAGE_TAG}
+    ports:
+      - "3000:80"
