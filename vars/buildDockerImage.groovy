@@ -40,14 +40,19 @@ def call(Map config = [:]) {
 
     def appType = config.appType
     def image   = config.image
+    def tag     = config.tag ?: "latest"
 
-    echo "Building Docker image for ${appType}"
-    echo "Image name: ${image}"
+    echo "Building Docker image"
+    echo "App Type : ${appType}"
+    echo "Image    : ${image}:${tag}"
+
+    // Load Dockerfile from shared library resources
+    def dockerfile = libraryResource("${appType}/Dockerfile")
+    writeFile file: 'Dockerfile', text: dockerfile
 
     sh """
-        echo "Using Dockerfile from shared library"
-        cp resources/${appType}/Dockerfile Dockerfile
-        docker build -t ${image} .
+        ls -l
+        docker build -t ${image}:${tag} .
     """
 }
 
