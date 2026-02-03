@@ -7,6 +7,6 @@ def call(String appType) {
     writeFile file: 'docker-compose.yml', text: composeContent
 
     sh """
-        docker-compose up -d
+        docker compose up -d
     """
 }
