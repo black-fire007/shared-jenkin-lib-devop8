@@ -3,8 +3,27 @@
 #     image: nginx:alpine
 #     container_name: react-cont
 
-services:
-  react-app:
+# services:
+#   react-app:
+#     image: ${IMAGE_NAME}:${IMAGE_TAG}
+#     ports:
+#       - "3000:80"
+services: 
+  reactjs-srv: 
+    # image: imagename
     image: ${IMAGE_NAME}:${IMAGE_TAG}
-    ports:
+    container_name: reactjs-container 
+    ports: 
       - "3000:80"
+    labels: 
+      - "traefik.enable=true"
+      - "traefik.http.routers.reactjs.tls=true"
+      - "traefik.http.routers.reactjs.rule=Host(`earthdx.devnerd.store`)"
+      - "traefik.http.routers.reactjs.entrypoints=web,websecure"
+      - "traefik.http.routers.reactjs.tls.certresolver=letsencrypt"
+      # - "traefik.http.services.reactjs.loadbalancer.server.port=3000"
+    networks: 
+      - proxy
+networks: 
+  proxy:
+    external: true 
