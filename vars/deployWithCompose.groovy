@@ -6,7 +6,7 @@ def call(String appType) {
     def composeContent = libraryResource("${appType}/docker-compose.yml")
     writeFile file: 'docker-compose.yml', text: composeContent
 
-    def IMAGE_NAME = "piseth11/jenkins-react-pipeline"
+    def IMAGE_NAME = "piseth11/reactjs-app"
     def IMAGE_TAG  = env.BUILD_NUMBER
     def IMAGE      = "${IMAGE_NAME}:${IMAGE_TAG}"
 
