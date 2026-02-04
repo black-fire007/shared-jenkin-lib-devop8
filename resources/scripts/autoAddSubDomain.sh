@@ -54,7 +54,7 @@ EOF
     nginx -t && systemctl reload nginx
 
     echo "Requesting HTTPS certificate for ${domain_name}..."
-    certbot --nginx -d "${domain_name}" --non-interactive --agree-tos -m your-email@example.com
+    certbot --nginx -d "${domain_name}" --non-interactive --agree-tos -m pisethkhon888@gmail.com
 fi
 
 echo "Deployment for ${domain_name} completed!"
