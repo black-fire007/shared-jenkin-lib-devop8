@@ -44,7 +44,7 @@ RUN chown -R 1001:0 /usr/share/nginx/html \
     && chmod -R g+rwX /var/cache/nginx /var/run /var/log/nginx
 
 # Use non-root user (OpenShift will override UID, but this is good practice)
-# USER 1001
+USER 1001
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
