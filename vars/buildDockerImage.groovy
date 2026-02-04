@@ -50,8 +50,8 @@ def call(Map config = [:]) {
     def dockerfile = libraryResource("${appType}/Dockerfile")
     writeFile file: 'Dockerfile', text: dockerfile
 
-      def nginxConf = libraryResource("${appType}/nginx.conf")
-        writeFile file: 'nginx.conf', text: nginxConf
+    //   def nginxConf = libraryResource("${appType}/nginx.conf")
+    //     writeFile file: 'nginx.conf', text: nginxConf
 
     sh """
         ls -l
